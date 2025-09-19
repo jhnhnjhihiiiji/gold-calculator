@@ -1,0 +1,94 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 40px;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+th, td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: center;
+}
+
+input {
+  width: 100%;
+  padding: 5px;
+}
+
+.section {
+  margin-top: 10px;
+}
+
+@media print {
+  body {
+    font-family: monospace;
+    font-size: 12px;
+    margin: 0;
+    padding: 10px;
+    width: 58mm;
+    background: white;
+  }
+
+  h1, h2 {
+    text-align: center;
+    font-size: 14px;
+  }
+
+  /* Hide input section and other UI elements */
+  #inputSection,
+  #currency,
+  input,
+  select,
+  button,
+  label,
+  #historyModal {
+    display: none !important;
+  }
+
+  /* Ensure print area is shown */
+  #printSummary {
+    display: block !important;
+    font-family: monospace;
+    margin-top: 10px;
+  }
+
+  /* FIXED: Show table structure properly */
+  #printSummary table,
+  #printSummary thead,
+  #printSummary tbody,
+  #printSummary tr,
+  #printSummary td,
+  #printSummary th {
+    border: 1px solid #000 !important;
+    padding: 4px !important;
+    visibility: visible !important;
+    text-align: center !important;
+  }
+
+  #printSummary table {
+    display: table !important;
+    width: 100% !important;
+  }
+
+  #printSummary thead {
+    display: table-header-group !important;
+  }
+
+  #printSummary tbody {
+    display: table-row-group !important;
+  }
+
+  #printSummary tr {
+    display: table-row !important;
+  }
+
+  #printSummary th,
+  #printSummary td {
+    display: table-cell !important;
+  }
+}

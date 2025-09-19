@@ -1,0 +1,86 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="manifest" href="manifest.json" />
+</head>
+<body>
+   <!-- Customer Input --><label for="customerNameInput">Customer Name:</label> <input type="text" id="customerNameInput" placeholder="Enter customer name">
+
+  <div id="inputSection">
+    <table id="goldTable" border="1">
+      <thead>
+        <tr>
+          <th>Normal Weight (g)</th>
+          <th>Gold Per (%)</th>
+          <th>Pure Gold (g)</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <button onclick="addRow()">Add Row</button>
+    <br><br><label>Total Pure Gold (g):</label><input id="totalPureGold" readonly><br>
+<label>Gold Issued (g):</label><input id="goldIssued" type="number" value="0" oninput="calculatePureGold()"><br>
+<label>Balance Gold (g):</label><input id="balanceGold" readonly><br>
+
+<label>Gold Rate (per gram):</label><input id="goldRate" type="number" value="6100" oninput="calculateTotalValue()"><br>
+
+<label>Currency:</label>
+<select id="currency" onchange="calculateTotalValue()">
+  <option value="₹">₹ INR</option>
+  <option value="$">$ USD</option>
+  <option value="€">€ EUR</option>
+</select>
+
+<label>Total Value:</label><input id="totalValue" readonly><br><br>
+
+<!-- Gold Given and Final Amount -->
+<div class="form-group">
+  <label for="goldGivenValue">Old Cash Balance (₹):</label>
+  <input type="number" id="goldGivenValue" placeholder="Enter gold value given" oninput="updateFinalAmount()">
+</div>
+
+<div class="form-group">
+  <label for="finalAmount">🔻 Balance Payment (₹):</label>
+  <input type="text" id="finalAmount" readonly>
+</div>
+
+<button onclick="saveFinalHistory()">➕ Save Entry</button><br><br>
+<button onclick="exportToExcel()">Export to Excel</button>
+<button onclick="printBill()">🖸 Print</button>
+<button onclick="showHistory()">📜 View History</button>
+
+<div id="historyModal" style="display:none; border:1px solid #ccc; padding:10px; margin-top:10px;">
+  <h3>History</h3>
+  <div id="historyContent"></div>
+  <br>
+  <button onclick="closeHistory()">❌ Close History</button>
+</div>
+
+  </div>  
+  <div id="printSummary" style="display:none;">
+    <h2 style="text-align: center;">"Shree Ganeshay Namah"</h2>
+    <p><strong>Name:</strong> <span id="customerName"></span></p>
+    <p><strong>B.no:</strong> <span id="billNumber"></span> <span style="float:right;"> <span id="currentDate"></span> <span id="currentTime"></span> <span id="currentDay"></span> </span></p>
+    <table border="1" width="100%">
+      <thead>
+        <tr>
+          <th>Normal Weight</th>
+          <th>Gold per %</th>
+          <th>Pure Gold</th>
+        </tr>
+      </thead>
+      <tbody id="printTableBody"></tbody>
+    </table>
+    <br>
+    <p><strong>Total Pure Gold:</strong> <span id="printTotalGold"></span> g</p>
+    <p><strong>Gold Issued:</strong> <span id="printIssued"></span> g</p>
+    <p><strong>Balance:</strong> <span id="printBalance"></span> g</p>
+    <p><strong>Rate:</strong> <span id="printRate"></span></p>
+    <p><strong>Total Value:</strong> <span id="printValue"></span></p>
+    <p><strong>Old Cash Balance</strong> <span id="printGoldGiven"></span></p>
+    <p><strong>Balance Payment</strong> <span id="printFinalAmount"></span></p>
+  </div>  
+  <script src="app.js"></script></body>
+</html>
